@@ -1,0 +1,37 @@
+Exp 2-SQOOP
+
+1) mysql -u root -pcloudera
+2) CREATE DATABASE db;
+3) USE db;
+4) CREATE TABLE employees (
+id INT NOT NULL PRIMARY KEY,
+name VARCHAR (20),
+deg VARCHAR (20),
+salary INT,
+dept VARCHAR (10)
+);
+
+5) INSERT INTO employees VALUES (1, ‘Archit Lokhande’, ‘SDE1’, 100000, ‘SD’),
+(2, ‘Om Hedau’, ‘Data Analyst’, 75000, ‘DW’),
+(3, ‘Shail Patil’, ‘Data Scientist’, 120000, ‘DW’),
+(4, ‘Mihir Khatri’, ‘Cyber Expert’, 105000, ‘ST’);
+
+6) Exit
+
+sqoop list-databses --connect jdbc:mysql://localhost/db --username root --table employees --password cloudera
+7) sqoop import --connect jdbc:mysql://localhost/db --username root --table employees --password cloudera
+8) hadoop fs -ls /user/cloudera/employees
+9) mysql -u root -pcloudera
+10) Use db;
+11) DROP TABLE employees;
+12) CREATE TABLE employees (
+id INT NULL PRIMARY KEY;
+name VARCHAR (20),
+deg VARCHAR (20),
+salary INT,
+dept VARCHAR (10)
+);
+13) EXIT;
+14) scoop export --connect jdbc:mysql://localhost/db-table employees --export-dir /user/cloudera/employees --input-fields-terminated-by ‘,’ --username root --password cloudera
+15) USE db;
+16) SELECT * FROM employees;
