@@ -1,0 +1,74 @@
+1. Start Mongo Shell
+mongosh
+
+If you want to connect to a specific database:
+mongosh "mongodb://localhost:27017"
+
+2. Create or Switch Database
+use myDatabase
+
+3. Create a Collection
+db.createCollection("students")
+
+4. CREATE (Insert Data)
+➤ Insert a single document
+db.students.insertOne({
+  name: "Alice",
+  age: 22,
+  course: "AI & ML"
+})
+
+➤ Insert multiple documents
+db.students.insertMany([
+  { name: "Bob", age: 23, course: "Cybersecurity" },
+  { name: "Charlie", age: 21, course: "Data Science" }
+])
+
+5. READ (Find Data)
+➤ View all documents
+db.students.find()
+
+➤ Pretty print
+db.students.find().pretty()
+
+➤ Find specific document(s)
+db.students.find({ name: "Alice" })
+
+➤ Find with condition
+db.students.find({ age: { $gt: 21 } })   // greater than 21
+db.students.find({ course: { $in: ["AI & ML", "Cybersecurity"] } })
+
+6. UPDATE (Modify Data)
+➤ Update one document
+db.students.updateOne(
+  { name: "Alice" },                  // filter
+  { $set: { age: 23 } }               // update field
+)
+
+➤ Update multiple documents
+db.students.updateMany(
+  { course: "Cybersecurity" },
+  { $set: { course: "Network Security" } }
+)
+
+7. DELETE (Remove Data)
+➤ Delete one document
+db.students.deleteOne({ name: "Bob" })
+
+➤ Delete multiple documents
+db.students.deleteMany({ age: { $lt: 22 } })
+
+➤ Delete all documents in a collection
+db.students.deleteMany({})
+
+8. DROP (Remove Collection or Database)
+➤ Drop a collection
+db.students.drop()
+
+➤ Drop the current database
+db.dropDatabase()
+
+9. View Databases and Collections
+show dbs           // list databases
+use myDatabase     // switch to your DB
+show collections   // list all collections in current DB

@@ -61,7 +61,3 @@ if __name__ == "__main__":
                 print(f"'{number}' is definitely not present.")
         except ValueError:
             print("Please enter a valid number.")
-
-
-
-

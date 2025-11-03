@@ -38,5 +38,3 @@ for x, h, binary, r in table:
 R = 2 ** max_r
 print("\nMaximum trailing zeros observed (r):", max_r)
 print("Estimated number of distinct elements (R = 2^r):", R)
-
-
