@@ -1,0 +1,17 @@
+data = LOAD '/user/hadoop/input/data.txt' USING PigStorage(',') AS (id:int, name:chararray, marks:int);
+
+DUMP data;
+
+
+high_marks = FILTER data BY marks > 80;
+DUMP high_marks;
+
+
+grouped_data = GROUP data BY marks;
+
+
+result = FOREACH data GENERATE name, marks;
+DUMP result;
+
+
+STORE result INTO '/user/hadoop/output/result';
