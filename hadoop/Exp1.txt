@@ -1,0 +1,52 @@
+Exp1 -HADDOOP
+
+   1) hdfs dfs -ls
+→ Lists all files and directories in the current local directory.
+
+2)  hdfs dfs -mkdir exp1
+→ Creates a new folder named exp1 in the current directory.
+
+3) hdfs dfs -cd exp1
+→ Changes the working directory to exp1.
+
+4) hdfs dfs -cat e1
+→ Displays the content of the local file e1.
+
+5) hdfs dfs -mkdir guru.txt
+→ ❌ Wrong usage — -mkdir is for directories, not files.
+(It should be hdfs dfs -touchz guru.txt to create an empty file.)
+
+6)hdfs dfs -touchz /guru.txt
+
+6) hdfs dfs -touchz /demo1
+→ Creates an empty file named /demo1 in HDFS.
+
+7) hdfs dfs -mkdir /demo2
+→ Creates a directory named /demo2 in HDFS.
+
+8) hdfs dfs -touchz /demo2/file1.txt
+→ Creates an empty file file1.txt inside /demo2 in HDFS.
+
+9) hdfs dfs -put ../exp1/hii /demo2/file3.txt
+→ Uploads a local file named hii from ../exp1 to HDFS as /demo2/file3.txt.
+
+10) hdfs dfs -cat /demo2/file3.txt
+→ Displays the content of /demo2/file3.txt stored in HDFS.
+
+11) hdfs dfs -get /demo2/file3.txt ../exp1/hii.txt
+→ Downloads /demo2/file3.txt from HDFS and saves it locally as hii.txt inside ../exp1.
+
+12) hdfs dfs -moveFromLocal ../exp1/hii.txt /demo2/fromlocaltohdfs.txt
+→ Moves the local file hii.txt to HDFS directory /demo2 (deletes from local after moving).
+
+📘 Scenario Summary (What’s Happening)
+
+A local directory exp1 is created and used for work.
+
+Some local files like e1 and hii are used.
+
+In HDFS, directories /demo1 and /demo2 are created.
+
+Files are created and transferred between local system ↔ HDFS.
+
+The content of files is checked (cat), and one file is moved permanently from local to HDFS.
