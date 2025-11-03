@@ -1,0 +1,50 @@
+Exp3
+1)hive
+2)show databases
+3)create database testing;
+4)use testing;
+5)create table posts (user string, post string, words bigint)
+row format delimited
+fields terminated by ‘,’;
+6)show tables;
+
+Create a folder named DB and create a file named post.txt inside it
+then type these inside post.txt
+
+user1,funny_story,1550
+user2,sad_story,2333
+user3,horror_story,3222
+
+then copy paste below given command
+
+7)load data local inpath ‘/home/cloudera/Desktop/DB/posts.txt’ into table posts; 
+8)select * from posts;
+9)select count (1) from posts;
+10)drop table posts;
+
+
+External Table
+
+1)CREATE EXTERNAL TABLE posts
+(user STRING, post STRING, time BIGINT)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BT ‘,’
+STORED AS TEXTFILE;
+2)CREATE TABLE posts1 (user STRING, post STRING, time BIGINT) PARTITIONED BY (country STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘,’
+STORED AS TEXTFILE;
+3)desc post1;
+4)show partitions post1;
+5)load data local inpath ‘/home/cloudera/Desktop/hdfs/userp-AUS’ overwrite into table post1 partition (country=’AUS’)
+6)load data local inpath ‘/home/cloudera/Desktop/hdfs/userp-US’ overwrite into table post1 partition (country=’US’)
+
+
+Bucketing
+1)CREATE TABLE post_count (user STRING, count INT)
+CLUSTERED BY (user) INTO 5 BUCKETS;
+set hive.enforce.bucketing=true;
+insert overwrute table post_cpunt
+select user, count(post) from posts group by user;
+2)exit
+
