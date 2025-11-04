@@ -18,7 +18,6 @@ dept VARCHAR (10)
 
 6) Exit
 
-sqoop list-databses --connect jdbc:mysql://localhost/db --username root --table employees --password cloudera
 7) sqoop import --connect jdbc:mysql://localhost/db --username root --table employees --password cloudera
 8) hadoop fs -ls /user/cloudera/employees
 9) mysql -u root -pcloudera
@@ -32,6 +31,7 @@ salary INT,
 dept VARCHAR (10)
 );
 13) EXIT;
-14) scoop export --connect jdbc:mysql://localhost/db-table employees --export-dir /user/cloudera/employees --input-fields-terminated-by ‘,’ --username root --password cloudera
-15) USE db;
-16) SELECT * FROM employees;
+14) sqoop export --connect jdbc:mysql://localhost/db --username root --password cloudera --table employees --export-dir /user/cloudera/employees --input-fields-terminated-by ','
+15) mysql -u root -pcloudera
+16) USE db;
+17) SELECT * FROM employees;

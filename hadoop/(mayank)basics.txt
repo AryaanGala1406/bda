@@ -1,0 +1,55 @@
+Basic Hadoop Commands to Execute
+👉 (a) Check Hadoop Installation
+hadoop version
+
+
+Output: Shows Hadoop version and build details.
+
+👉 (b) List all directories in HDFS root
+hadoop fs -ls /
+
+👉 (c) Create a new directory in HDFS
+hadoop fs -mkdir /user
+hadoop fs -mkdir /user/cloudera
+hadoop fs -mkdir /user/cloudera/hadoop_test
+hadoop fs -mkdir /user/cloudera/bda
+
+👉 (d) Upload a local file to HDFS
+
+First, create a local file:
+
+echo "Hello Hadoop" > sample.txt
+
+
+Then upload it:
+
+hadoop fs -put sample.txt /user/cloudera/hadoop_test/
+
+7️⃣ Create an empty file Sample4.txt inside /user/cloudera/bda
+
+hadoop fs -touchz /user/cloudera/bda/Sample4.txt
+
+4️⃣ Display the content of the file stored in HDFS
+
+hadoop fs -cat /user/cloudera/bda/Sample4.txt
+
+8️⃣ List all files recursively under /user/cloudera
+
+hadoop fs -ls -R /user/cloudera
+
+
+👉 (e) List files inside HDFS directory
+hadoop fs -ls /user/cloudera/hadoop_test/
+
+👉 (f) Read the file from HDFS
+hadoop fs -cat /user/cloudera/hadoop_test/sample.txt
+
+👉 (g) Download file from HDFS to local system
+hadoop fs -get /user/cloudera/hadoop_test/sample.txt /home/cloudera/Desktop/
+
+👉 (h) Remove file or directory from HDFS
+hadoop fs -rm /user/cloudera/hadoop_test/sample.txt
+hadoop fs -rmdir /user/cloudera/hadoop_test
+
+Final step,
+(i) hadoop fs -expunge

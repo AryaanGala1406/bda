@@ -9,6 +9,7 @@ use myDatabase
 
 3. Create a Collection
 db.createCollection("students")
+show collections
 
 4. CREATE (Insert Data)
 ➤ Insert a single document

@@ -14,6 +14,7 @@ print(sum(is.na(iris)))
 
 # Load the ggplot2 library for visualization
 library(ggplot2)
+# Rscript -e "install.packages('ggplot2', repos='https://cloud.r-project.org')"
 
 # Plot 1: Histogram for Sepal Length distribution
 hist_plot <- ggplot(iris, aes(x = Sepal.Length)) +
